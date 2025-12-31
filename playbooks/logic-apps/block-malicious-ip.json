@@ -149,7 +149,7 @@
                                                 "destinationAddressPrefix": "*",
                                                 "destinationPortRange": "*",
                                                 "direction": "Inbound",
-                                                "priority": "@{add(200, rand(1, 800))}",
+                                                "priority": "@{add(200, mod(ticks(utcNow()), 800))}",
                                                 "protocol": "*",
                                                 "sourceAddressPrefix": "@{items('For_each_IP')?['Address']}",
                                                 "sourcePortRange": "*"

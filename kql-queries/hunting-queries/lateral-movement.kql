@@ -8,8 +8,10 @@
 let LookbackHours = 24;
 
 // Detection 1: Network logons followed by privileged activity
+let TimeFilter = ago(LookbackHours * 1h);
+
 let RemoteLogons = SecurityEvent
-| where TimeGenerated > ago(LookbackHours * 1h)
+| where TimeGenerated > TimeFilter
 | where EventID == 4624
 | where LogonType == 3  // Network logon
 | where IpAddress != "-" and IpAddress != "" and IpAddress != "127.0.0.1"
@@ -21,7 +23,7 @@ let RemoteLogons = SecurityEvent
     LogonID = TargetLogonId;
 
 let PrivilegedActions = SecurityEvent
-| where TimeGenerated > ago(LookbackHours * 1h)
+| where TimeGenerated > TimeFilter
 | where EventID in (
     4672,  // Special privileges assigned
     4688,  // Process creation

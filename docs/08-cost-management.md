@@ -425,4 +425,4 @@ Congratulations! You've completed all phases of the Azure Sentinel SOC Lab! 🎉
 
 ---
 
-[← Previous: Threat Hunting](07-threat-hunting.md) | [Back to Main README →](../README.md)
+[← Back to Main README](../README.md)
